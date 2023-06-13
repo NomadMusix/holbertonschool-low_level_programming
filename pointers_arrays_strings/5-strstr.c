@@ -19,7 +19,7 @@ char *_strstr(char *haystack, char *needle)
 	while (haystack[len1] != '\0')
 	{
 		len2 = 0; /* rest index for needle on each iteration */
-		
+
 		/* loop through needle until end of string reached */
 		while (needle[len2] != '\0')
 		{
@@ -34,7 +34,7 @@ char *_strstr(char *haystack, char *needle)
 				break; /* exit loop on mismatch */
 			}
 		}
-		
+
 		/* check if needle has been fully matched */
 		if (needle[len2] == '\0')
 		{
