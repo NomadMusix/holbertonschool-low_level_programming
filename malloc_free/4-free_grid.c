@@ -2,51 +2,20 @@
 #include <stdio.h>
 #include <stdlib.h>
 /**
- * print_grid - prints a grid of integers
- * @grid: the address of the two dimensional grid
- * @width: width of the grid
+ * free_grid - frees a 2 dimensional grid previously created by
+ * alloc_grid function.
+ * @grid: the 2 dimensional grid to be freed.
  * @height: height of the grid
  *
- * Return: Nothing.
+ * Return: void
  */
-void print_grid(int **grid, int width, int height)
+void free_grid(int **grid, int height)
 {
-	int w;
-	int h;
-	
-	h = 0;
-	while (h < height)
-	{
-		w = 0;
-		while (w < width)
-		{
-			printf("%d ", grid[h][w]);
-			w++;
-		}
-		printf("\n");
-		h++;
-	}
-}
+	int i;
 
-/**
- * main - check the code
- *
- * Return: Always 0.
- */
-int main(void)
-{
-	int **grid;
-
-	grid = alloc_grid(6, 4);
-	if (grid == NULL)
+	for (i = 0; i < height; i++)
 	{
-		return (1);
+		free(grid[i]); /* free memory allocated for each row */
 	}
-	print_grid(grid, 6, 4);
-	printf("\n");
-	grid[0][3] = 98;
-	grid[3][4] = 402;
-	print_grid(grid, 6, 4);
-	free_grid(grid, 4);
-	return (0);
+	free(grid); /* free the memory allocated for the grid */
 }
